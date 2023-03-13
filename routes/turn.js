@@ -6,7 +6,8 @@ const Round = require('../src/round');
 router.post('/', (req, res) => {
   const playerChoice = req.body.choice;
   const round = new Round();
-  const { result, computerChoice } = round.playRound(playerChoice);
+  const computerChoice = round.computerMove();
+  const result = round.playRound(playerChoice, computerChoice);
   res.render('turn', { playerChoice, result, computerChoice });
 });
 

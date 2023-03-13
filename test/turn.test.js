@@ -1,16 +1,17 @@
 const chai = require('chai');
+const expect = chai.expect;
 const chaiHttp = require('chai-http');
 const app = require('../app');
 
 chai.use(chaiHttp);
-const expect = chai.expect;
 
-// describe('POST /turn', async ()=>{
-//   it('should render turn.ejs with player and computer choice', async()=>{
-//     const playerChoice = 'rock';
-//     const res = await chai.request(app).post('/turn').type('form').send({playerChoice})
-//         // expect(res).to.have.status(200);
-//         console.log(res)
-//         expect(res).to.contain({playerChoice});
-//       });
-//   });
+describe('POST /turn', function () {
+    it('should return a response with status 200', async () => {
+        const res = await chai.request(app).keepOpen().post('/turn').type('form').send({choice: 'rock'});
+        expect(res).to.have.status(200);
+    });
+    it('should return a response with the data', async () => {
+        const res = await chai.request(app).keepOpen().post('/turn').type('form').send({choice: 'rock'});
+        expect(res.text).to.include('rock');
+	});
+});

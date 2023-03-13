@@ -1,5 +1,3 @@
-const Player = require('./player')
-
 class Round {
   constructor() {
     this.choices = {
@@ -14,17 +12,14 @@ class Round {
     return keys[Math.floor(Math.random() * 3)];
   }
 
-  playRound(playerMove) {
-    const computerChoice = this.computerMove();
-    let result;
+  playRound(playerMove,computerChoice) {
     if (playerMove === computerChoice) {
-      result = "It's a draw!";
+      return "It's a tie!";
     } else if (this.choices[playerMove].beats === computerChoice) {
-      result = "You win!";
+      return "You win!";
     } else {
-      result = "Computer wins!";
+      return "Computer wins!";
     }
-    return { result, computerChoice };
   }
 }
 
