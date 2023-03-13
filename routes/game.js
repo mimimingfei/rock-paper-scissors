@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/game', (req, res) => {
-    res.render('game');
+router.get('/', (req, res) => {
+  res.render('game', { playerName: "" });
   });
   
-router.post('/game', (req, res) => {
+router.post('/', (req, res) => {
     const playerName = req.body.player;
     res.render('game', { playerName: playerName });
   });

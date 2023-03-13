@@ -9,16 +9,13 @@ const port = 3000;
 
 // Set up view engine
 app.set('view engine', 'ejs');
-app.set('views', 'views');
-
-// Set up middleware to parse request bodies
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
 // Set up routes
 app.use('/', indexRoutes);
-app.use('/', gameRoutes);
-app.use('/', turnRoutes);
+app.use('/game', gameRoutes);
+app.use('/turn', turnRoutes);
 
 // Start server
 app.listen(3000, () => {
