@@ -11,7 +11,7 @@ class Round {
 
   computerMove() {
     const keys = Object.keys(this.choices);
-    return keys[Math.floor(Math.random() * keys.length)];
+    return keys[Math.floor(Math.random() * 3)];
   }
 
   playRound(playerMove) {
